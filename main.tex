@@ -1,0 +1,792 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% --- PAKIETY I KONFIGURACJA ---
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+\usepackage{helvet}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage[most]{tcolorbox}
+
+% --- PALETA BARW ---
+\definecolor{bgCanvas}{RGB}{250, 252, 255}
+\definecolor{textPrimary}{RGB}{30, 41, 59}
+\definecolor{textMuted}{RGB}{100, 116, 139}
+\definecolor{primaryNavy}{RGB}{15, 23, 42}
+\definecolor{accentCoral}{RGB}{225, 29, 72}
+\definecolor{accentTeal}{RGB}{13, 148, 136}
+\definecolor{cardBg}{RGB}{255, 255, 255}
+\definecolor{cardBorder}{RGB}{226, 232, 240}
+
+% --- KONFIGURACJA STYLU BEAMER ---
+\setbeamercolor{background canvas}{bg=bgCanvas}
+\setbeamercolor{normal text}{fg=textPrimary}
+\setbeamercolor{title}{fg=primaryNavy}
+\setbeamercolor{author}{fg=textMuted}
+\setbeamercolor{date}{fg=textMuted}
+\setbeamercolor{frametitle}{fg=primaryNavy, bg=}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{frametitle}{
+    \vspace*{0.3cm}
+    \begin{beamercolorbox}[wd=\paperwidth, ht=1.0cm, dp=0.2cm, leftskip=0.8cm]{frametitle}
+        {\usebeamerfont{frametitle}\Huge\textbf{\insertframetitle}}
+    \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}{
+    \begin{beamercolorbox}[wd=\paperwidth, ht=0.6cm, dp=0.3cm, rightskip=0.8cm]{footline}
+        \hfill \small\textcolor{textMuted}{\insertframenumber\,/\,\inserttotalframenumber}
+    \end{beamercolorbox}
+}
+
+% --- STYLIZACJA BLOKÓW (TCOLORBOX) ---
+\tcbset{
+    moderncard/.style={
+        enhanced,
+        colback=cardBg,
+        colframe=cardBorder,
+        boxrule=1pt,
+        arc=4pt,
+        boxsep=5pt,
+        left=8pt, right=8pt, top=10pt, bottom=8pt,
+        fonttitle=\bfseries\sffamily,
+        coltitle=primaryNavy,
+        colbacktitle=cardBg,
+        attach boxed title to top left={xshift=10pt, yshift=-0.25mm},
+        boxed title style={
+            boxrule=0pt,
+            colframe=cardBg,
+            arc=0pt,
+            outer arc=0pt,
+            top=2pt, bottom=2pt, left=4pt, right=4pt
+        }
+    }
+}
+
+% --- DANE PREZENTACJI ---
+\title{Publiczne ocenianie, porównywanie i zawstydzanie uczniów oraz ich konsekwencje}
+\subtitle{Sztuka budowania bezpiecznego środowiska uczenia się}
+\author{Prezentacja studencka}
+\institute{Kierunek: Matematyka Nauczycielska \quad|\quad Przedmiot: Komunikacja Interpersonalna}
+\date{\today}
+
+\begin{document}
+
+% --- SLAJD 1: TYTUŁOWY ---
+\begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[primaryNavy] (current page.north west) rectangle ([xshift=2.2cm]current page.south west);
+        \fill[accentCoral] ([xshift=2.0cm]current page.north west) rectangle ([xshift=2.2cm]current page.south west);
+    \end{tikzpicture}
+    
+    \vfill
+    \begin{beamercolorbox}[wd=\paperwidth, leftskip=3.2cm, rightskip=1.0cm]{title}
+        \usebeamerfont{title}
+        \sffamily 
+        
+        {\Large \sffamily \bfseries \textcolor{textMuted}{}}\\[0.4cm]
+        
+        {\fontsize{26pt}{32pt}\selectfont \sffamily \bfseries \textcolor{primaryNavy}{Publiczne ocenianie,}}\\[0.15cm]
+        {\fontsize{26pt}{32pt}\selectfont \sffamily \bfseries \textcolor{primaryNavy}{porównywanie i zawstydzanie}}\\[0.15cm]
+        {\fontsize{26pt}{32pt}\selectfont \sffamily \bfseries \textcolor{primaryNavy}{uczniów przez nauczyciela}}\\[0.35cm]
+        
+        {\fontsize{26pt}{32pt}\selectfont \sffamily \bfseries \textcolor{accentCoral}{i jego konsekwencje}}
+    \end{beamercolorbox}
+    \vfill
+\end{frame}
+
+% --- SLAJD 2: SZKOLNA CODZIENNOŚĆ ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[opacity=0.50, inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth, height=\paperheight]{ooolowek.png}};
+}
+\begin{frame}{}
+    \begin{columns}[T]
+        \begin{column}{0.62\textwidth}
+            \vspace{0.1cm}
+            {\large\bfseries\textcolor{primaryNavy}{Z czym wciąż spotykamy się w klasach?}}
+            
+            \vspace{0.4cm}
+            \begin{itemize}
+                \setlength{\itemsep}{12pt} 
+                \item \textbf{głośne odczytywanie wyników} sprawdzianów na forum klasy
+                \item \textbf{porównywanie uczniów ze sobą} i wyróżnianie jednych kosztem pozostałych
+                \item \textbf{krytykowanie uczniów przy tablicy} z powodu braków w wiedzy lub trudności z zadaniem
+            \end{itemize}
+        \end{column}
+\pause
+        \begin{column}{0.35\textwidth}
+            \begin{tcolorbox}[
+                enhanced,
+                colback=primaryNavy!5,
+                colframe=primaryNavy!20,
+                arc=4mm,
+                boxrule=0.5pt,
+                top=4mm, bottom=4mm, left=4mm, right=4mm
+            ]
+                \centering
+                \small\itshape\textcolor{primaryNavy}{
+                    Czy publiczne wytykanie błędów i presja grupy rzeczywiście motywują do nauki...?
+                }
+            \end{tcolorbox}
+            
+            \vspace{2.5cm} 
+        \end{column}
+    \end{columns}
+\end{frame}
+}
+
+% --- SLAJD 3: MECHANIZMY PRESJI SPOŁECZNEJ ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[opacity=0.50, inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth, height=\paperheight]{kartka_x.jpg}};
+}
+\begin{frame}{Presja społeczna w klasie}
+    \begin{columns}[T]
+        \begin{column}{0.20\textwidth}
+        \end{column}
+        \pause
+        \begin{column}{0.65\textwidth}
+            \vspace{0.64cm}
+            {\large\bfseries\textcolor{primaryNavy}{Publiczna Ocena}}
+            \vspace{0.07cm}
+            \begin{itemize}
+                \footnotesize
+                \item Czytanie wyników na głos
+                \item Sprowadzanie jednostki wyłącznie \\do cyfry
+            \end{itemize}
+            \pause
+            \vspace{0.3cm}
+            
+            {\large\bfseries\textcolor{primaryNavy}{Porównywanie}}
+            \vspace{0.07cm}
+            \begin{itemize}
+                \footnotesize
+                \item Nadawanie etykiet (prymus vs słaby)
+                \item Zaburzenie relacji rówieśniczych \\(rywalizacja)
+            \end{itemize}
+            \pause
+            \vspace{0.3cm}
+            
+            {\large\bfseries\textcolor{primaryNavy}{Zawstydzanie}}
+            \vspace{0.07cm}
+            \begin{itemize}
+                \footnotesize
+                \item Sarkazm i wytykanie błędów
+                \item Komunikat: „Jesteś niewystarczający”
+            \end{itemize}
+            
+            \vspace{0.4cm}
+            
+        \end{column}
+        
+        \begin{column}{0.225\textwidth}
+        \end{column}
+    \end{columns}
+\end{frame}
+}
+
+% --- SLAJD 4: TOKSYCZNOŚĆ PORÓWNYWANIA ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[opacity=0.50, inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth, height=\paperheight]{prymus.jpg}};
+}
+\begin{frame}{}
+    \vspace{0.4cm}
+    \begin{columns}[T]
+        \begin{column}{0.39\textwidth}
+            
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}
+        \end{column}
+        
+        \begin{column}{0.57\textwidth}
+            {\Large\sffamily\bfseries\textcolor{primaryNavy}{Negatywne skutki porównywania uczniów ze sobą:}}\\[0.5cm]
+            \small
+            \begin{itemize}
+                \setlength{\itemsep}{10pt}
+                \pause\item Publiczne stawianie za wzór jest dla ucznia kłopotliwe – rodzi zawiść rówieśników i grozi wykluczeniem z grupy.
+                \pause\item Przy spadku samooceny uczeń zużywa energię \\na obronę własnej godności, zamiast na efektywną naukę.
+                \pause\item Rywalizacja uczy postawy \textit{„jeśli inni wypadną źle, ja wydam się lepszy”}. Niszczy to szczerość i chęć do współpracy.
+            \end{itemize}
+            \vspace{0.4cm}
+            \scriptsize\textcolor{textMuted}{Źródło: Th. Gordon, B. Niemierko}
+        \end{column}
+    \end{columns}
+\end{frame}
+}
+
+% --- SLAJD 5: NEUROBIOLOGIA ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[anchor=west, opacity=0.45, inner sep=0pt] at (current page.west) 
+    {\includegraphics[height=\paperheight, keepaspectratio]{mozg2.jpg}};
+}
+\begin{frame}{Zawstydzanie powoduje stres}
+    \pause
+    
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south west, text width=0.48\paperwidth, align=left, inner sep=0pt] 
+        at ([xshift=1.2cm, yshift=1.2cm]current page.south west) {
+            \footnotesize
+            
+        };
+    \end{tikzpicture}
+
+    \vspace{-0.7cm}
+    \begin{columns}[T]
+        \begin{column}{0.42\textwidth}
+        \end{column}
+        
+        \begin{column}{0.58\textwidth}
+            \begin{tcolorbox}[
+                enhanced,
+                colback=white,
+                opacityback=0.95, 
+                colframe=cardBorder,
+                boxrule=1pt,
+                arc=4pt,
+                boxsep=5pt,
+                left=10pt, right=10pt, top=12pt, bottom=12pt
+            ]
+                {\large \bfseries \sffamily \textcolor{primaryNavy}{Jak stres blokuje proces poznawczy?}}\\[0.04cm]
+                
+                \small
+                \begin{itemize}
+                    \setlength{\itemsep}{10pt}
+                    \item Zawstydzenie działa na ciało migdałowate jak fizyczne zagrożenie.
+                    \item Kortyzol i adrenalina wymuszają reakcję obronną, tryb przetrwania.
+                    \item Kora przedczołowa (logika, analiza i pamięć) zostaje czasowo zablokowana.
+                    
+                \end{itemize}
+            \end{tcolorbox}
+        \end{column}
+    \end{columns}
+\end{frame}
+}
+
+% --- SLAJD 6: BLOKADY KOMUNIKACYJNE ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[opacity=0.50, inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth, height=\paperheight]{mur.jpg}};
+}
+\vspace{0.2cm}
+\begin{frame}{\normalsize\textcolor{textPrimary}{
+                Typowe automatyczne reakcje, które uniemożliwiają efektywny dialog i \textbf{budują mur} między nauczycielem a uczniem:
+            }}
+    \begin{columns}[T]
+        \begin{column}{0.20\textwidth}
+        \end{column}
+        
+        \begin{column}{0.55\textwidth}
+            \pause
+            \begin{flushleft}
+                {\small\bfseries\textcolor{primaryNavy}{Moralizowanie}}\\
+                \textit{\footnotesize „Powinieneś bardziej się postarać, z takim podejściem nic nie osiągniesz.”}
+            \end{flushleft}
+            \vspace{-0.1cm}
+            \pause
+            \begin{flushleft}
+                \hspace{0.77cm}{\small\bfseries\textcolor{primaryNavy}{Osądzanie}}\\
+                \hspace{0.77cm}\textit{\footnotesize „Zawsze popełniasz te same błędy.”}
+            \end{flushleft}
+            \vspace{-0.1cm}
+            \pause
+            \begin{flushleft}
+                {\small\bfseries\textcolor{primaryNavy}{Ośmieszanie}}\\
+                \textit{\footnotesize „To było w szkole podstawowej, a ty wciąż tego \\nie rozumiesz?”}
+            \end{flushleft}
+            \vspace{-0.1cm}
+            \pause
+            \begin{flushleft}
+                \hspace{0.25cm}{\small\bfseries\textcolor{primaryNavy}{Diagnozowanie}}\\
+                \hspace{0.25cm}\textit{\footnotesize „Robisz to specjalnie, żeby przedłużyć lekcję.”}
+            \end{flushleft}
+            
+        \end{column}
+        
+        \begin{column}{0.43\textwidth}
+        \end{column}
+    \end{columns}
+
+    \begin{tikzpicture}[remember picture, overlay]
+        \pause\node[rotate=15, text=black] at ([xshift=4.5cm, yshift=0.6cm]current page.center) {\scriptsize\bfseries POSTAWA OBRONNA};
+        \node[rotate=15, text=black] at ([xshift=4.5cm, yshift=-0.6cm]current page.center) {\scriptsize\bfseries GNIEW};
+        \node[rotate=15, text=black] at ([xshift=5.0cm, yshift=-1.5cm]current page.center) {\scriptsize\bfseries WYCOFANIE Z AKTYWNOŚCI};
+    \end{tikzpicture}
+\end{frame}
+}
+
+% --- SLAJD 7: PARADOKS NAUCZYCIELA ---
+\begin{frame}{Paradoks nauczyciela}
+    \vspace{0.4cm}
+    \begin{columns}[T]
+        \begin{column}{0.05\textwidth}
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            {\fontsize{40}{40}\selectfont\sffamily\bfseries\textcolor{primaryNavy!10}{1}}\\[-0.7cm]
+            {\large\bfseries\textcolor{primaryNavy}{Intencja}}\\[0.3cm]
+            \small\textcolor{textPrimary}{Chcę przekazać wiedzę, zmotywować klasę i utrzymać dyscyplinę.}
+        \end{column}
+        
+        \begin{column}{0.09\textwidth}
+            \vspace{1.2cm}
+            \centering\textcolor{textMuted}{\Large $\rightarrow$}
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            {\fontsize{40}{40}\selectfont\sffamily\bfseries\textcolor{accentCoral!10}{2}}\\[-0.7cm]
+            {\large\bfseries\textcolor{accentCoral}{Metoda}}\\[0.3cm]
+            \small\textcolor{textPrimary}{Publiczna krytyka, wytykanie błędów, porównywanie i sarkazm.}
+        \end{column}
+        
+        \begin{column}{0.09\textwidth}
+            \vspace{1.2cm}
+            \centering\textcolor{textMuted}{\Large $\rightarrow$}
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            {\fontsize{40}{40}\selectfont\sffamily\bfseries\textcolor{primaryNavy!10}{3}}\\[-0.7cm]
+            {\large\bfseries\textcolor{primaryNavy}{Efekt}}\\[0.3cm]
+            \small\textcolor{textPrimary}{Opór ucznia, blokada poznawcza, niechęć i rozpad relacji.}
+        \end{column}
+        
+        \begin{column}{0.05\textwidth}
+        \end{column}
+    \end{columns}
+    
+    \vspace{1.2cm}
+    \pause
+    
+    \begin{center}
+        \normalsize\textcolor{textPrimary}{Używanie wstydu jako narzędzia dydaktycznego}\\
+        \vspace{0.15cm}
+        \large\textbf{\textcolor{accentCoral}{czynnie niweczy zamierzone cele edukacyjne.}}
+    \end{center}
+\end{frame}
+
+% --- SLAJD 8: QUIZ 1 ---
+\begin{frame}{FAKT CZY MIT?}
+    \vfill
+    \begin{center}
+        {\Large\sffamily\bfseries\textcolor{primaryNavy}{
+        ZAWSTYDZENIE WYWOŁUJE POTRZEBĘ\\
+        UKRYCIA SIĘ, A NIE CHĘĆ DO ROZWOJU.
+        }}\\[1.2cm]
+        
+        \pause
+        {\fontsize{50}{60}\selectfont\sffamily\bfseries\textcolor{accentTeal}{FAKT}}
+    \end{center}
+    \vfill
+\end{frame}
+
+% --- SLAJD 9: QUIZ 2 ---
+\begin{frame}{FAKT CZY MIT?}
+    \vfill
+    \begin{center}
+        {\Large\sffamily\bfseries\textcolor{primaryNavy}{
+        UCZNIÓW TRZEBA ZASKOCZYĆ PUBLICZNĄ\\
+        JEDYNKĄ, WTEDY WEZMĄ SIĘ DO PRACY.
+        }}\\[1.2cm]
+        
+        \pause
+        {\fontsize{50}{60}\selectfont\sffamily\bfseries\textcolor{accentCoral}{MIT}}
+    \end{center}
+    \vfill
+\end{frame}
+
+% --- SLAJD 10: QUIZ 3 ---
+\begin{frame}{FAKT CZY MIT?}
+    \vfill
+    \begin{center}
+        {\Large\sffamily\bfseries\textcolor{primaryNavy}{
+        ODPORNOŚĆ PSYCHICZNĄ BUDUJE SIĘ\\
+        W POCZUCIU BEZPIECZEŃSTWA, A NIE STRESU.
+        }}\\[1.2cm]
+        
+        \pause
+        {\fontsize{50}{60}\selectfont\sffamily\bfseries\textcolor{accentTeal}{FAKT}}
+    \end{center}
+    \vfill
+\end{frame}
+
+% --- SLAJD 11: QUIZ 4 ---
+\begin{frame}{FAKT CZY MIT?}
+    \vfill
+    \begin{center}
+        {\Large\sffamily\bfseries\textcolor{primaryNavy}{
+        ŻYCIE NIE JEST KOLOROWE —\\
+        ZAWSTYDZAJĄC UCZNIÓW HARTUJĘ ICH NA DOROSŁOŚĆ.
+        }}\\[1.2cm]
+        
+        \pause
+        {\fontsize{50}{60}\selectfont\sffamily\bfseries\textcolor{accentCoral}{MIT}}
+    \end{center}
+    \vfill
+\end{frame}
+
+% --- SLAJD 12: QUIZ 5 ---
+\begin{frame}{FAKT CZY MIT?}
+    \vfill
+    \begin{center}
+        {\Large\sffamily\bfseries\textcolor{primaryNavy}{
+        PORÓWNYWANIE RODZI NIECHĘĆ DO\\
+        WZOROWEGO UCZNIA, A NIE MOTYWACJĘ.
+        }}\\[1.2cm]
+        
+        \pause
+        {\fontsize{50}{60}\selectfont\sffamily\bfseries\textcolor{accentTeal}{FAKT}}
+    \end{center}
+    \vfill
+\end{frame}
+
+% --- SLAJD 13: DŁUGOFALOWE KONSEKWENCJE ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[opacity=0.50, inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth, height=\paperheight]{ciezar.jpg}};
+}
+\begin{frame}\normalsize{}
+    
+    \vspace{0.5cm}
+    {\Large\textcolor{textPrimary}{
+        Konsekwencje publicznego oceniania, zawstydzania, \\wytykania błędów na forum klasy oraz \\porównywania uczniów między sobą.\\[0.01cm]
+        \textbf{\textcolor{accentCoral}{}}
+    }}
+    
+    \vspace{0.04cm}
+    \begin{columns}[T]
+        \begin{column}{0.10\textwidth}
+        \end{column}
+        
+        \begin{column}{0.50\textwidth}
+            \pause
+            {\large\sffamily\bfseries\textcolor{primaryNavy}{Wymiar Psychologiczny}}\\[0.2cm]
+            \begin{itemize}
+                \setlength{\itemsep}{6pt}
+                \item \textbf{Wewnętrzny krytyk} 
+                \item \textbf{Wyuczona bezradność} 
+                \item \textbf{Lęk przed błędem} 
+            \end{itemize}
+            
+            \vspace{0.3cm}
+            \pause
+            {\large\sffamily\bfseries\textcolor{primaryNavy}{Wymiar Społeczny}}\\[0.2cm]
+            \begin{itemize}
+                \setlength{\itemsep}{6pt}
+                \item \textbf{Rywalizacja zamiast współpracy} 
+                \item \textbf{Przemoc, dręczenie} 
+                \item \textbf{Niechęć do przedmiotu} 
+            \end{itemize}
+            
+        \end{column}
+        
+        \begin{column}{0.40\textwidth}
+        \end{column}
+    \end{columns}
+\end{frame}
+}
+
+% --- SLAJD 14: POZIOMY KOMUNIKACJI ---
+\begin{frame}{Poziomy komunikacji w klasie}
+    \vspace{0.4cm}
+    \begin{columns}[T]
+        \begin{column}{0.04\textwidth}
+        \end{column}
+        
+        \begin{column}{0.28\textwidth}
+            {\fontsize{55}{55}\selectfont\sffamily\bfseries\textcolor{accentCoral!15}{1}}\\[-0.8cm]
+            {\large\bfseries\textcolor{accentCoral}{Obronna}}\\[0.3cm]
+            \footnotesize\textcolor{textPrimary}{\textbf{Niskie zaufanie, strach.}}\\
+            Uczeń filtruje przekaz, unika kary i szuka strategii obronnych.\\[0.4cm]
+            \normalsize\textbf{\textcolor{textPrimary}{Wynik:}} \textcolor{accentCoral}{Przetrwanie}
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}
+            \vspace{1.5cm}
+            \centering\textcolor{cardBorder}{\large $\rightarrow$}
+        \end{column}
+        
+        \begin{column}{0.28\textwidth}
+            {\fontsize{55}{55}\selectfont\sffamily\bfseries\textcolor{primaryNavy!10}{2}}\\[-0.8cm]
+            {\large\bfseries\textcolor{primaryNavy}{Kompromis}}\\[0.3cm]
+            \footnotesize\textcolor{textPrimary}{\textbf{Umiarkowane zaufanie.}}\\
+            Poszanowanie reguł, ale bez pełnej otwartości na próby i błędy.\\[0.4cm]
+            \normalsize\textbf{\textcolor{textPrimary}{Wynik:}} \textcolor{primaryNavy}{Poprawność}
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}
+            \vspace{1.5cm}
+            \centering\textcolor{cardBorder}{\large $\rightarrow$}
+        \end{column}
+
+        \begin{column}{0.28\textwidth}
+            {\fontsize{55}{55}\selectfont\sffamily\bfseries\textcolor{accentTeal!15}{3}}\\[-0.8cm]
+            {\large\bfseries\textcolor{accentTeal}{Synergiczna}}\\[0.3cm]
+            \footnotesize\textcolor{textPrimary}{\textbf{Wysokie zaufanie i relacja.}}\\
+            Bezpieczeństwo wyzwala otwartość, dociekliwość i pasję.\\[0.4cm]
+            \normalsize\textbf{\textcolor{textPrimary}{Wynik:}} \textcolor{accentTeal}{\textbf{Pełny rozwój}}
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}
+        \end{column}
+    \end{columns}
+    
+    \vspace{1.2cm}
+    \begin{center}
+        \scriptsize\textcolor{textMuted}{Źródło: Model komunikacji Coveya-Stróżyńskiego (B. Niemierko, „Ocenianie szkolne bez tajemnic”, s. 245)}
+    \end{center}
+\end{frame}
+
+% --- SLAJD 15: PUŁAPKA KOMUNIKATÓW "TY" ---
+\begin{frame}{Pułapka komunikatów „TY”}
+    \vspace{0.05cm}
+    \begin{columns}[T]
+        \begin{column}{0.04\textwidth}\end{column}
+        \pause
+        
+        \begin{column}{0.44\textwidth}
+            \begin{center}
+                {\Large\rmfamily\itshape\bfseries\textcolor{accentCoral}{Przerzucenie winy}}\\[0.1cm]
+                
+            \end{center}
+            \begin{center}
+                \footnotesize
+                \textcolor{primaryNavy}{\textbf{Frustracja nauczyciela}} \\
+                \vspace{0.1cm}
+                \textcolor{textMuted}{$\downarrow$} \\
+                \vspace{0.1cm}
+                \textcolor{accentCoral}{\textit{„Zachowujesz się niegrzecznie!”}} \\
+                \vspace{0.1cm}
+                \textcolor{textMuted}{$\downarrow$} \\
+                \vspace{0.1cm}
+                \textcolor{textPrimary}{\textbf{Odbiór:} „Nauczyciel uważa, że jestem zły”}
+            \end{center}
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}\end{column}
+        \pause
+        
+        \begin{column}{0.44\textwidth}
+            \begin{center}
+                {\Large\rmfamily\itshape\bfseries\textcolor{primaryNavy}{Formy zawstydzania}}\\
+            \end{center}
+            \vspace{0.2cm}
+            
+            \small\textcolor{textPrimary}{
+            Większość takich komunikatów zawiera oskarżycielskie \textbf{„TY”} i uderza bezpośrednio w poczucie wartości ucznia:
+            }
+            
+            \vspace{0.15cm}
+            \begin{itemize}
+                \footnotesize
+                \setlength{\itemsep}{4pt}
+                \item \textbf{Krytykowanie:} \textit{„Nie myślisz dojrzale.”}
+                \item \textbf{Epitety:} \textit{„Zachowujesz się jak dziecko!”}
+                \item \textbf{Sarkazm:} \textit{„Drugi Einstein z ciebie...”}
+                \item \textbf{Moralizowanie:} \textit{„Powinieneś to umieć!”}
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}\end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \pause
+    \begin{center}
+        \footnotesize \textbf{\textcolor{accentCoral}{Wniosek:}} Komunikat „TY” unika odpowiedzialności za uczucia nauczyciela.\\Uczeń jest wystawiony na publiczną, negatywną ocenę.
+        
+        \vspace{0.25cm}
+        \scriptsize\textcolor{textMuted}{Źródło: Thomas Gordon, \textit{Wychowanie bez porażek w szkole}, s. 150–152}
+    \end{center}
+\end{frame}
+
+% --- SLAJD 16: ZMIANA JĘZYKA ---
+\begin{frame}{Dobór słów ma znaczenie}
+    \vspace{0.6cm}
+    \begin{columns}[T]
+        \begin{column}{0.04\textwidth}
+        \end{column}
+        
+        \begin{column}{0.44\textwidth}
+            \begin{center}
+                {\Large\rmfamily\itshape\bfseries\textcolor{accentCoral}{Komunikat „TY”}}\\[0.1cm]
+                {\footnotesize\textcolor{textMuted}{(oceniający)}}
+            \end{center}
+            \vspace{0.4cm}
+            
+            \begin{center}
+                \textit{\small „Jesteś nieuważny i znowu przeszkadzasz w prowadzeniu zajęć.”}
+            \end{center}
+            \vspace{0.4cm}
+            
+            \footnotesize \textbf{\textcolor{accentCoral}{Skutek:}} Koncentracja na wadach ucznia. Wywołuje natychmiastowy opór i defensywę.
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}
+        \end{column}
+        
+        \begin{column}{0.44\textwidth}
+            \begin{center}
+                {\Large\rmfamily\itshape\bfseries\textcolor{accentTeal}{Komunikat „JA”}}\\[0.1cm]
+                {\footnotesize\textcolor{textMuted}{(opisowy)}}
+            \end{center}
+            \vspace{0.4cm}
+            
+            \begin{center}
+                \textit{\small „Trudno mi kontynuować wywód, gdy w klasie panuje hałas. Zależy mi na sprawnym przejściu przez ten materiał.”}
+            \end{center}
+            \vspace{0.15cm}
+            
+            \footnotesize \textbf{\textcolor{accentTeal}{Skutek:}} Skupienie na faktach i potrzebach. Nie podważa godności odbiorcy.
+        \end{column}
+        
+        \begin{column}{0.04\textwidth}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% --- SLAJD 17: ZASADA ZERO (POUFNOŚĆ) ---
+\begin{frame}{Poufność oceniania}
+    \vspace{0.4cm}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+        \pause
+            \begin{tcolorbox}[moderncard]
+                \small
+                
+                \begin{itemize}
+                    \item \textbf{Według RODO} oceny to chronione dane osobowe.
+                    \item Oceny są jawne wyłącznie dla osób uprawnionych (uczeń, rodzice, nauczyciel).
+                    \item Nie jest wskazane wyczytywanie ocen na głos czy publikacja list wyników, gdy możliwa jest identyfikacja ucznia.
+                \end{itemize}
+            \end{tcolorbox}
+        \end{column}
+        \pause
+        \begin{column}{0.40\textwidth}
+            \begin{tcolorbox}[tealcard]
+                \centering
+                \textbf{\textcolor{accentTeal}{Dobra praktyka}}\\[0.3cm]
+                \small
+                Informację zwrotną przekazuj \textbf{dyskretnie i indywidualnie}.
+            
+            \end{tcolorbox}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% --- SLAJD 18: OCENIANIE KSZTAŁTUJĄCE ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[anchor=east, opacity=0.50, inner sep=0pt] at (current page.east) 
+    {\includegraphics[height=\paperheight, keepaspectratio]{schody.jpg}};
+}
+\begin{frame}{Ocenianie kształtujące w praktyce}
+    \vspace{0.4cm}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+            \pause
+            {\large\sffamily\bfseries\textcolor{primaryNavy}{Informacja zwrotna:}}\\[0.2cm]
+            \small
+            \begin{enumerate}
+                \setlength{\itemsep}{5pt}
+                \item Wskazanie elementów wykonanych poprawnie.
+                \item Określenie miejsca powstania błędu.
+                \item Sugestia konkretnych działań naprawczych.
+                \item Wyznaczenie kolejnego celu rozwojowego.
+            \end{enumerate}
+            
+            \vspace{0.5cm}
+            \pause
+            \scriptsize\textcolor{textMuted}{
+                Podawanie uczniowi samego komentarza orientuje go \\na zadanie i skutkuje przyrostem osiągnięć, podczas \\gdy podawanie oceny i komentarza sprawia, że uczeń \\skupia się wyłącznie na cyfrze. \\- B. Niemierko, \textit{„Ocenianie szkolne bez tajemnic”}, s. 253
+            }
+            
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+        \end{column}
+    \end{columns}
+\end{frame}
+}
+
+% --- SLAJD 19: PODSUMOWANIE ---
+{
+\usebackgroundtemplate{
+    \tikz[remember picture, overlay]
+    \node[anchor=east, opacity=0.50, inner sep=0pt] at (current page.east) 
+    {\includegraphics[height=\paperheight, keepaspectratio]{schody.jpg}};
+}
+\begin{frame}{Podsumowanie}
+    \vspace{0.4cm}
+    \begin{columns}[T]
+        \begin{column}{0.58\textwidth}
+            
+            \pause
+            \small\textcolor{textPrimary}{
+            Rola nauczyciela wykracza poza \\przekazywanie wiedzy:
+            }
+            
+            \vspace{0.3cm}
+            
+            \begin{itemize}
+                \setlength{\itemsep}{10pt} 
+                \pause\item Sposób komunikacji kształtuje postawę \\ucznia wobec nauki na całe życie.
+                \pause\item Publiczne ocenianie i zawstydzanie \\budują bariery rozwojowe.
+                \pause\item Poczucie bezpieczeństwa i szacunek \\stanowią fundament efektywnej edukacji.
+            \end{itemize}
+            
+        \end{column}
+        
+        \begin{column}{0.38\textwidth}
+        \end{column}
+    \end{columns}
+\end{frame}
+}
+
+% --- SLAJD 20: ZAKOŃCZENIE ---
+\begin{frame}
+    \vfill
+
+    \begin{tcolorbox}[moderncard]
+        \centering
+
+        \vspace{0.5cm}
+
+        {\Huge\bfseries
+        \textcolor{primaryNavy}{Dziękujemy za uwagę!}
+        \par}
+        \vspace{0.5cm}
+
+        {\large
+        \textcolor{primaryNavy}{Jolanta Sułkowska}
+        \par}
+
+        \vspace{0.2cm}
+
+        {\large
+        \textcolor{primaryNavy}{Karolina Studzińska}
+        \par}
+
+        \vspace{0.5cm}
+    \end{tcolorbox}
+
+    \vfill
+\end{frame}
+\end{document}
